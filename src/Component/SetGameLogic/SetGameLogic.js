@@ -53,24 +53,24 @@ const SetGameLogic = () => {
         <div className={styles.radioOption}>
           <input
             type="radio"
-            id="leastAmountWillWin"
+            id="List Will Win"
             name="gameMode"
             value="Least Amount Will Win"
             checked={selectedMode === 'Least Amount Will Win'}
             onChange={handleModeChange}
           />
-          <label htmlFor="leastAmountWillWin">Least Amount Will Win</label>
+          <label htmlFor="List Will Win">Least Amount Will Win</label>
         </div>
         <div className={styles.radioOption}>
           <input
             type="radio"
-            id="randomNumberWillWin"
+            id="normalgame"
             name="gameMode"
-            value="Random Number Will Win"
-            checked={selectedMode === 'Random Number Will Win'}
+            value="Normal Game"
+            checked={selectedMode === 'Normal Game'}
             onChange={handleModeChange}
           />
-          <label htmlFor="randomNumberWillWin">Random Number Will Win</label>
+          <label htmlFor="normalgame">Normal Game</label>
         </div>
       </div>
       <button className={styles.submitButton} onClick={handleSubmit}>

@@ -52,7 +52,7 @@ function Sidebar() {
   return (
     <div className={styles.sidebar}>
       <div className={styles.logo}>
-        <img src="/Image/Sidebar/GAMZ360.png" alt="Dashboard" />
+        <img src="/Image/Sidebar/Group 44.png" alt="Dashboard" />
         {/* <div>Games360</div> */}
       </div>
       <div className={styles.adminInfo}>
@@ -123,7 +123,7 @@ function Sidebar() {
                 <li  onClick={toggleRummyDropdown} className={styles.ppppd}>
                   <div className={styles.ppp}>
                     <img src="/Image/Sidebar/user.png" alt="Dashboard" />
-                    Teenpatti
+                    Black and White
                   </div>
 
                   <div className={styles.ppp}>
@@ -154,6 +154,42 @@ function Sidebar() {
                   </ul>
                 )}
               </li>
+
+              <li className={isRummyDropdownOpen ? styles.dropdownToggle : ''}>
+                <li  onClick={toggleRummyDropdown} className={styles.ppppd}>
+                  <div className={styles.ppp}>
+                    <img src="/Image/Sidebar/user.png" alt="Dashboard" />
+                    Aviator
+                  </div>
+
+                  <div className={styles.ppp}>
+                    {isRummyDropdownOpen ? <ChevronDown /> : <ChevronRight />}
+                  </div>
+
+                </li>
+                {/* Display the dropdown menu when isRummyDropdownOpen is true */}
+                {isRummyDropdownOpen && (
+                  <ul className={styles.dropdownMenu} >
+                    <li>
+                      <Link to="/gamehistory?game=Aviator" onClick={() => handleClick('Aviator/Game History')}>
+                        <li className={styles.dropdowncontent}>
+                          <img src="/Image/Sidebar/user.png" alt="Dashboard" />
+                          Game History
+                        </li>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/setgamelogic?game=Aviator"  onClick={() => handleClick('Aviator/Game Logic')}>
+                        <li className={styles.dropdowncontent}>
+                          <img src="/Image/Sidebar/user.png" alt="Dashboard" />
+                          Set game logic
+                        </li>
+                      </Link>
+                    </li>
+
+                  </ul>
+                )}
+              </li> 
 
             </ul>
           )}
