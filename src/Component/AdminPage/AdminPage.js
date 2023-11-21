@@ -117,7 +117,7 @@ const AdminPage = () => {
           </div>
         </div>
         <div className={styles.rectangle}>
-          <div className={styles.icon}> <img src="/Image/Dashbord/Withdraw.png" alt="Icon" /></div>
+          <div className={styles.icon}> <img src="/Image/Dashbord/withdraw.png" alt="Icon" /></div>
           <div className={styles.text}>
             <h3>{todayWithdraw}</h3>
             <p>Todays Withdraw</p>
