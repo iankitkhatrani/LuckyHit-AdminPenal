@@ -4,7 +4,8 @@
     "main.js": "/static/js/main.cd237a28.js",
     "index.html": "/index.html",
     "main.342afa4f.css.map": "/static/css/main.342afa4f.css.map",
-    "main.cd237a28.js.map": "/static/js/main.cd237a28.js.map"
+    "main.cd237a28.js.map": "/static/js/main.cd237a28.js.map",
+    "Image":"image"
   },
   "entrypoints": [
     "static/css/main.342afa4f.css",

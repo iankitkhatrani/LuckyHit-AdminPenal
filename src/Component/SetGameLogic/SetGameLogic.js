@@ -9,6 +9,7 @@ const SetGameLogic = () => {
   const handleModeChange = (event) => {
     setSelectedMode(event.target.value);
   };
+  
 
   let location = useLocation();
   let gameName = location.search.split("=")[1]
