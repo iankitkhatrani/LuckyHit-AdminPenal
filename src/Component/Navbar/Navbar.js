@@ -17,24 +17,24 @@ function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.toggleButton} onClick={toggleNavbar}>
-        <img className={styles.toggleButton1} src="%PUBLIC_URL%/Image/Sidebar/ham.png" alt="User" />
+        <img className={styles.toggleButton1} src="/Image/Sidebar/ham.png" alt="User" />
       </div>
       <div className={styles.adminInfoActivepage}>{activePage.value}</div>
       <div >
         <form className={styles.navbarSearch}>
           <input className={styles.navbarSearchInput} type="text" placeholder='Search...' />
-          <img className={styles.navbarSearchIcon} src="%PUBLIC_URL%/Image/Sidebar/search.png" alt="User" />
+          <img className={styles.navbarSearchIcon} src="/Image/Sidebar/search.png" alt="User" />
         </form>
       </div>
       <div className={styles.navbarNotification}>
-        <img className={styles.navbarNotificationIcon} src="%PUBLIC_URL%/Image/Sidebar/Noti.png" alt="User" />
+        <img className={styles.navbarNotificationIcon} src="/Image/Sidebar/Noti.png" alt="User" />
         <div className={styles.notificationBadge}>8</div>
       </div>
       <div className={styles.navbarNotification}>
-        <img className={styles.navbarNotificationIcon} src="%PUBLIC_URL%/Image/Sidebar/mail.png" alt="User" />
+        <img className={styles.navbarNotificationIcon} src="/Image/Sidebar/mail.png" alt="User" />
       </div>
       <div className={styles.navbarNotification}>
-        <img className={styles.navbarNotificationIcon} src="%PUBLIC_URL%/Image/Sidebar/cal.png" alt="User" />
+        <img className={styles.navbarNotificationIcon} src="/Image/Sidebar/cal.png" alt="User" />
       </div>
       <div className={styles.adminInfo}>
         <div className={styles.adminInfoleft}>
