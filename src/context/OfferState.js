@@ -2,6 +2,9 @@
 import offerContext from "./offerContext"
 import React, { useState,useContext} from 'react';
 
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
+
 const host = "http://16.170.158.18:2828";//"http://192.168.0.203:2828"//
 //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTQ5Y2NlM2JhNDA4YTJlMjg3ZjJlYzUiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQHNpc3VnYW16LmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJHhZZzVMUlNRRWxiNENOZnVocjdncmUyUjNMOUQ5eDhaWmc0c0QxSW9uY1N6ZWFTSHgzMTIuIiwiY3JlYXRlZEF0IjoiMjAyMy0xMS0wN1QwNTozNjozNS42NjBaIiwibW9kaWZpZWRBdCI6IjIwMjMtMTEtMDdUMDU6MzY6MzUuNjYwWiIsImlhdCI6MTY5OTMzNTQxMywiZXhwIjoxNjk5OTQwMjEzfQ.NrLsWSnyD09P3h30rsng_R3bygn3TsKl8nXyD7qom4c";
 
@@ -12,8 +15,7 @@ const OfferState = (props) => {
     
     const [adminname, setAdminname] = useState(props.adminname);
     const [adminEmail, setAdminEmail] = useState(props.adminEmail);
-    const [token, setToken] = useState(props.tokendata);
-
+    const [token, setToken] = useState(cookies.get('token'));
 
 
     const dashboardData = async () => {
@@ -30,7 +32,21 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from ::::...", json)
-            return await json
+
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                console.log("dffffffffffffffffffffffffffffffffffffffffffffffffff",cookies.get('token'))
+                setToken("")
+                cookies.set('token', "");
+
+                console.log("dffffffffffffffffffffffffffffffffffffffffffffffffff",cookies.get('token'))
+                
+                return {}
+            }else{
+                return await json
+            }
+
+
+            
 
         }catch(e){
             console.log("e :" ,e)
@@ -51,8 +67,17 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json.RecentUser
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                console.log("dffffffffffffffffffffffffffffffffffffffffffffffffff",cookies.get('token'))
+                setToken("")
+                cookies.set('token', "");
 
+                console.log("dffffffffffffffffffffffffffffffffffffffffffffffffff",cookies.get('token'))
+
+                return []
+            }else{
+                return await json.RecentUser
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -75,7 +100,16 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json.userList
+            
+
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return []
+            }else{
+                return await json.userList
+            }
 
 
         }catch(e){
@@ -100,8 +134,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
 
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return {}
+            }else{
+                return await json
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -122,8 +163,16 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
 
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return {}
+            }else{
+                return await json
+            }
+            
 
         }catch(e){
             console.log("e :" ,e)
@@ -145,8 +194,16 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json.userInfo
+            
 
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return {}
+            }else{
+                return await json.userInfo
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -167,7 +224,17 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :GetRouletteHistoryData :::...", json)
-            return await json.rouletteHistoryData
+
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return []
+            }else{
+                return await json.rouletteHistoryData
+            }
+
+            
 
 
         }catch(e){
@@ -189,9 +256,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :GetRouletteHistoryData :::...", json)
-            return await json.completeWithdrawalData
 
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return []
+            }else{
+                return await json.completeWithdrawalData
+            }
         }catch(e){
             console.log("e :" ,e)
         }
@@ -211,8 +284,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :GetRouletteHistoryData :::...", json)
-            return await json.completeDepositeData
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return []
+            }else{
+                return await json.completeDepositeData
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -233,8 +313,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :GetRouletteHistoryData :::...", json)
-            return await json.registerRaferralBonusData
+           
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return []
+            }else{
+                return await json.registerRaferralBonusData
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -255,8 +342,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :GetRouletteHistoryData :::...", json)
-            return await json.myRaferralsData
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return []
+            }else{
+                return await json.myRaferralsData
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -280,8 +374,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json.gameHistoryData
 
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return []
+            }else{
+                return await json.gameHistoryData
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -302,8 +403,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json.gameHistoryData
+          
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return []
+            }else{
+                return await json.gameHistoryData
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -325,7 +433,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return json
+            }else{
+                return await json
+            }
 
 
         }catch(e){
@@ -349,7 +465,16 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json.socialURLs
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return []
+            }else{
+                return await json.socialURLs
+            }
+
 
 
         }catch(e){
@@ -372,7 +497,16 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+            
+
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return {}
+            }else{
+                return await json
+            }
 
 
         }catch(e){
@@ -394,8 +528,14 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return {}
+            }else{
+                return await json
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -420,7 +560,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json.noticeText
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return []
+            }else{
+                return await json.noticeText
+            }
 
 
         }catch(e){
@@ -443,8 +591,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return json
+            }else{
+                return await json
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -465,7 +620,16 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+            
+
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return json
+            }else{
+                return await json
+            }
 
 
         }catch(e){
@@ -491,8 +655,14 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return json
+            }else{
+                return await json
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -514,8 +684,14 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return json
+            }else{
+                return await json
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -544,7 +720,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :SendPushnotification :::...", json)
-            return await json
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return json
+            }else{
+                return await json
+            }
 
 
         }catch(e){
@@ -569,7 +753,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json.bannerListData
+           
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return json.bannerListData
+            }else{
+                return await json.bannerListData
+            }
 
 
         }catch(e){
@@ -592,8 +784,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return json
+            }else{
+                return await json
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -619,11 +818,21 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            if(json.flag){
-                return json.path
+
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return json
             }else{
-                return ""
+                if(json.flag){
+                    return json.path
+                }else{
+                    return ""
+                }
             }
+
+            
 
         }catch(e){
             console.log("e :" ,e)
@@ -645,8 +854,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return json
+            }else{
+                return json
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -672,8 +888,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json.userList
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return []
+            }else{
+                return json.userList
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -697,8 +920,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return {}
+            }else{
+                return json
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -724,11 +954,20 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            if(json.flag){
-                return json.path
-            }else{
+
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
                 return ""
+            }else{
+                if(json.flag){
+                    return json.path
+                }else{
+                    return ""
+                }
             }
+
 
         }catch(e){
             console.log("e :" ,e)
@@ -749,7 +988,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return {}
+            }else{
+                return json
+            }
 
 
         }catch(e){
@@ -771,8 +1018,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json.userInfo
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return {}
+            }else{
+                return json.userInfo
+            }
 
         }catch(e){
             console.log("e :" ,e)
@@ -796,8 +1050,15 @@ const OfferState = (props) => {
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
-            return await json
+          
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
 
+                return {}
+            }else{
+                return json
+            }
 
         }catch(e){
             console.log("e :" ,e)

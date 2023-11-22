@@ -1,8 +1,11 @@
 // Login.js
 import React, { useState,useContext } from 'react';
 import styles from './Login.module.css'; // Import CSS module
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 const host = "http://16.170.158.18:2828";
+
 
 
 function Login(props) {
@@ -49,9 +52,12 @@ function Login(props) {
 
     if(resData.status){
       
-        props.setToken(resData.data.token);
+        //props.setToken(resData.data.token);
         props.setAdmin(resData.data.name);
         props.setAdminEmail(resData.data.email)
+
+        cookies.set('token', resData.data.token);
+      
 
     }else{
       alert("Please Enter valid Email Or Passward..!!")
