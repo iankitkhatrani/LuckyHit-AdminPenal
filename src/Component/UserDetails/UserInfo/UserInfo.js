@@ -1,14 +1,84 @@
-import React , { useState } from 'react';
+import React , { useState,useContext } from 'react';
 import styles from './UserInfo.module.css';
-
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
+import offerContext from '../../../context/offerContext'
 
 function UserInfo(props) {
     console.log("poroper s ",props)
+ 
+    const [show, setShow] = useState(false);
+    const [showdeduct, setShowdeduct] = useState(false);
 
-    const [isVisible, setIsVisible] = useState(false);
 
-    const closePopup = () => setIsVisible(false);
+    const context = useContext(offerContext)
+    const { AddMoney,DeductMoney } = context
 
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const [amount, setAmount] = useState(0);
+    const [type, setType] = useState("");
+
+
+    const handleAmount = async (event) =>{
+        const { name, value } = event.target;
+        await setAmount(value)
+
+        console.log("amount",amount)
+
+    }   
+
+    const handleType = async (event) =>{
+        const { name, value } = event.target;
+        console.log("event.target ",event.target.value)
+        await setType(value)
+    }   
+
+
+    const SaveChange = async () =>{
+        console.log("amount ",amount)
+        console.log("type ",type)
+
+        let res = await AddMoney({money:amount,type:type,userId:props.userInfo._id})
+        
+        if(res.status == "ok"){
+            setShow(false)
+            alert("Successfully Added...!!")
+        }else{
+            alert("Error Please enter")
+        }
+
+        setAmount(0)
+        setType("")
+
+
+    }   
+
+    const handleCloseDeduct = () => setShowdeduct(false);
+    const handleShowDeduct = () => setShowdeduct(true);
+    
+
+    const SaveChangeDeduct = async () =>{
+        console.log("amount ",amount)
+        console.log("type ",type)
+
+        let res = await DeductMoney({money:amount,type:type,userId:props.userInfo._id})
+        
+        if(res.status == "ok"){
+            setShowdeduct(false)
+            alert("Successfully Deduct...!!")
+        }else{
+            alert("Error Please enter")
+        }
+
+        setAmount(0)
+        setType("")
+
+    }   
 
     const userData = props.userInfo != undefined ? {
         "name": props.userInfo.username || "" ,
@@ -82,8 +152,8 @@ function UserInfo(props) {
                     </div>
 
                     <div className={styles.userInfoActions}>
-                        <button className={styles.AddactionButton}  onClick={(e) => {e.stopPropagation(); setIsVisible(!isVisible);}} >Add Money</button>
-                        <button className={styles.DeductactionButton}>Deduct Money</button>
+                        <button className={styles.AddactionButton}  onClick={handleShow} >Add Money</button>
+                        <button className={styles.DeductactionButton} onClick={handleShowDeduct}>Deduct Money</button>
                         <button className={styles.kycButton}>KYC Info</button>
                     </div>
                 </div>
@@ -113,7 +183,70 @@ function UserInfo(props) {
                 </div>
             </div>
 
+         
 
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Add Money</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <FloatingLabel
+                    controlId="floatingInput"
+                    label="Amount"
+                    className="mb-3"
+                >
+                <Form.Control type="number" placeholder="0"  onChange={handleAmount} />
+              </FloatingLabel>
+
+
+                <Form.Select aria-label="Default select example" onChange={handleType}>
+                    <option value="">Transaction Mode</option>
+                    <option value="Bonus">Bonus</option>
+                    <option value="Refund">Refund</option>
+                </Form.Select>
+
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+                <Button variant="primary" onClick={SaveChange}>
+                    Save Changes
+                </Button>
+                </Modal.Footer>
+            </Modal>
+
+
+            <Modal show={showdeduct} onHide={handleCloseDeduct}>
+                <Modal.Header closeButton>
+                <Modal.Title>Deduct Money</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <FloatingLabel
+                    controlId="floatingInput"
+                    label="Amount"
+                    className="mb-3"
+                >
+                <Form.Control type="number" placeholder="0"  onChange={handleAmount} />
+              </FloatingLabel>
+
+
+                <Form.Select aria-label="Default select example" onChange={handleType}>
+                    <option value="">Transaction Mode</option>
+                    <option value="Bonus">Bonus</option>
+                    <option value="Refund">Refund</option>
+                </Form.Select>
+
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={handleCloseDeduct}>
+                    Close
+                </Button>
+                <Button variant="primary" onClick={SaveChangeDeduct}>
+                    Save Changes
+                </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 }

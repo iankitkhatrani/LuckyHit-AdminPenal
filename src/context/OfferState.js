@@ -357,6 +357,68 @@ const OfferState = (props) => {
         }
     } 
 
+
+    const AddMoney = async (data) => {
+        try{
+            console.log("PlayerList :::::::",`${host}/admin/user/addMoney`,data)
+            const response = await fetch(`${host}/admin/user/addMoney`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'token':token
+                },
+                body:JSON.stringify(data)
+            }).then(data => data.json())
+
+            const json =  response
+            console.log("data api from :GetRouletteHistoryData :::...", json)
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return {}
+            }else{
+                return await json
+            }
+
+        }catch(e){
+            console.log("e :" ,e)
+        }
+    } 
+
+
+    const DeductMoney = async (data) => {
+        try{
+            console.log("PlayerList :::::::",`${host}/admin/user/deductMoney`,data)
+            const response = await fetch(`${host}/admin/user/deductMoney`, {
+                method: 'PUT',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'token':token
+                },
+                body:JSON.stringify(data)
+            }).then(data => data.json())
+
+            const json =  response
+            console.log("data api from :GetRouletteHistoryData :::...", json)
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return {}
+            }else{
+                return await json
+            }
+
+        }catch(e){
+            console.log("e :" ,e)
+        }
+    } 
+
     //======================
     // game History 
 
@@ -1077,7 +1139,8 @@ const OfferState = (props) => {
             GetMentenance,MentenanceUpdate,
             SendPushnotification,
             BannerList,BannerAdd,DeleteBanner,UploadBanner,
-            BotList,BotAdd,BotDelete,BotData,UploadProfile,BotUpdate
+            BotList,BotAdd,BotDelete,BotData,UploadProfile,BotUpdate,
+            AddMoney,DeductMoney
             }}>
             {props.children}
         </offerContext.Provider>)

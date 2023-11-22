@@ -42,12 +42,25 @@ const AdminPage = () => {
   useEffect( () => {
     const submitdata = async () => {
       apiData = await dashboardData()
+      if(apiData.totalUser != undefined)
       settotalUser(apiData.totalUser)
+
+      if(apiData.totalDeposit != undefined)
       settotalDeposit(apiData.totalDeposit)
+
+      if(apiData.totalWithdraw != undefined)
       settotalWithdraw(apiData.totalWithdraw)
+
+      if(apiData.todayDeposit != undefined)
       settodayDeposit(apiData.todayDeposit)
+
+      if(apiData.todayWithdraw != undefined)
       setTodaywithdraw(apiData.todayWithdraw)
+
+      if(apiData.todayKYC != undefined)
       setTodaykYC(apiData.todayKYC)
+
+      if(apiData.totalGamePay != undefined)
       setTotalgamePay(apiData.totalGamePay)
 
       setJsonData(await latatestUser())
