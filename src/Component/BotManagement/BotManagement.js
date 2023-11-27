@@ -140,7 +140,7 @@ const BotManagement = () => {
           <tr>
             <th>User ID</th>
             <th>VIP</th>
-            <th>Username</th>
+            <th>Name</th>
             <th>Mobile Number</th>
             <th>Games Played</th>
             <th>Main Wallet</th>
@@ -160,7 +160,7 @@ const BotManagement = () => {
               <tr key={user._id}  className={styles['row-odd']}>
                 <td>{user.id}</td>
                 <td> <img className={styles.actionButtonIcon} src={user.isVIP == 1?"/Image/Dashbord/Kyc.png":""} /> </td>
-                <td>{user.username}</td>
+                <td>{user.name}</td>
                 <td>{user.mobileNumber}</td>
                 <td>{user.counters.totalMatch}</td>
                 <td>{user.chips}</td>
@@ -183,7 +183,7 @@ const BotManagement = () => {
               </tr> : <tr key={user._id}  >
               <td>{user.id}</td>
               <td> <img className={styles.actionButtonIcon} src={user.isVIP == 1?"/Image/Dashbord/Kyc.png":""} /> </td>
-              <td>{user.username}</td>
+              <td>{user.name}</td>
               <td>{user.mobileNumber}</td>
               <td>{user.counters.totalMatch}</td>
               <td>{user.chips}</td>

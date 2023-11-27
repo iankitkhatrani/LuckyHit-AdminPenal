@@ -8,14 +8,15 @@ function BotRegistration() {
     const [formData, setFormData] = useState({
         retailer: '',
         country: 'India',
-        playerName: '',
+        name: '',
         email: '',
         username: '',
         mobileNumber: '',
         password: '',
         deviceId:'111',
         isVIP:0,
-        Iscom:1
+        Iscom:1,
+        status:"true"
     });
 
     const handleChange = (event) => {
@@ -97,13 +98,13 @@ function BotRegistration() {
                 
                 <div className={styles.rowwise}>
                     <div className={styles.inputGroup}>
-                        <label htmlFor="playerName">Player Name *</label>
+                        <label htmlFor="name">Player Name *</label>
                         <input
                             placeholder="Enter Player Name"
                             type="text"
-                            name="playerName"
-                            id="playerName"
-                            value={formData.playerName}
+                            name="name"
+                            id="name"
+                            value={formData.name}
                             onChange={handleChange}
                             required
                         />
@@ -149,7 +150,7 @@ function BotRegistration() {
                     <label>
                         <input
                         type="radio"
-                        value={true}
+                        value={"true"}
                         name="status"
                         checked={formData.status === true}
                         onChange={OnChange}
@@ -159,7 +160,7 @@ function BotRegistration() {
                     <label>
                         <input
                         type="radio"
-                        value={false}
+                        value={"false"}
                         name="status"
                         checked={formData.status === false || formData.status === ""}
                         onChange={OnChange}

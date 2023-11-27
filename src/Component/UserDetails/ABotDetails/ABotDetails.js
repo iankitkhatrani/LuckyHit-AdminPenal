@@ -23,7 +23,7 @@ const ABotDetails = () => {
     let [userInfo,SetuserInfo] = useState({
         userId:userID,
         country: 'India',
-        username: '',
+        name: '',
         profileUrl:'',
         status:true
     })
@@ -36,7 +36,7 @@ const ABotDetails = () => {
             SetuserInfo({
                 userId:userID,
                 country: botData.country || "",
-                username: botData.username || "",
+                name: botData.name || "",
                 profileUrl: botData.profileUrl || "",
                 status: botData.status || true
             })
@@ -133,13 +133,13 @@ const ABotDetails = () => {
                 
                 <div className={styles.rowwise}>
                     <div className={styles.inputGroup}>
-                        <label htmlFor="username">Player Name *</label>
+                        <label htmlFor="name">Player Name *</label>
                         <input
                             placeholder="Enter Player Name"
                             type="text"
-                            name="username"
-                            id="username"
-                            value={userInfo.username}
+                            name="name"
+                            id="name"
+                            value={userInfo.name}
                             onChange={handleChange}
                             
                         />
