@@ -37,10 +37,10 @@ function Banner() {
       let res = await BannerAdd(newBanner)
       console.log("REsponce ::::::::::::::::::::::",res)
 
-      if(res.status == 200){
+      if(res.flags){
           
 
-          setBanners([...banners, newBanner]);
+          setBanners([...banners, res.data]);
           setNewTitle('');
           setSelectedImage(null);
       }else{
@@ -52,8 +52,8 @@ function Banner() {
     }
   };
 
-  const deleteNotice = async (id) => {
-    const updatedNotices = banners.filter((notice) => notice.id !== id);
+  const deleteBanner = async (id) => {
+    const updatedNotices = banners.filter((notice) => notice._id !== id);
     await DeleteBanner(id)
     setBanners(updatedNotices);
   };
@@ -94,16 +94,16 @@ function Banner() {
       <div className={styles.noticeList}>
 
         {banners.map((notice) => (
-          <div key={notice.id} className={styles.noticeItem}>
+          <div key={notice._id} className={styles.noticeItem}>
             
             {notice.imageUrl && (
               <img src={notice.imageUrl.includes('upload') ? host+"/"+notice.imageUrl : notice.imageUrl} alt="Banner" className={styles.noticeImage} />
             )}
             <h3 className={styles.noticeTitle}>{notice.title}</h3>
-            <p className={styles.noticeDate}>Posted on: {notice.date}</p>
+            <p className={styles.noticeDate}>Posted on: {notice.createdAt}</p>
             <button
               className={styles.deleteButton}
-              onClick={() => deleteNotice(notice.id)}
+              onClick={() => deleteBanner(notice._id)}
             >
               Delete
             </button>

@@ -33,8 +33,8 @@ function NoticeText() {
       let res = await NoticeTextLsAdd(newNotice)
       console.log("REsponce ::::::::::::::::::::::",res)
 
-      if(res.status == 200){
-        setNotices([...notices, newNotice]);
+      if(res.flags){
+        setNotices([...notices, res.data]);
         setNewTitle('');
         setNewContent('');
       }else{
@@ -47,7 +47,7 @@ function NoticeText() {
   };
 
   const deleteNotice = async (id) => {
-    const updatedNotices = notices.filter((notice) => notice.id !== id);
+    const updatedNotices = notices.filter((notice) => notice._id !== id);
     await DeleteNoticeText(id)
 
     setNotices(updatedNotices);
@@ -79,10 +79,10 @@ function NoticeText() {
           <div key={notice.id} className={styles.noticeItem}>
             <h3 className={styles.noticeTitle}>{notice.title}</h3>
             <p className={styles.noticeContent}>{notice.content}</p>
-            <p className={styles.noticeDate}>Posted on: {notice.date}</p>
+            <p className={styles.noticeDate}>Posted on: {notice.createdAt}</p>
             <button
               className={styles.deleteButton}
-              onClick={() => deleteNotice(notice.id)}
+              onClick={() => deleteNotice(notice._id)}
             >
               Delete
             </button>

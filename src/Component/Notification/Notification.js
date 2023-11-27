@@ -19,12 +19,17 @@ const Notification = () => {
   const { SendPushnotification } = context
   
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
     // You can add your logic here to handle the form submission
-    SendPushnotification({notificationTitle,notificationDescription})
-    console.log('Title:', notificationTitle);
+    const res =  await SendPushnotification({notificationTitle,notificationDescription})
+
+    res.falgs ? alert("Successfully Sent Push notification....") : alert("Fail to Push notification....")
+    console.log('Title:', res);
     console.log('Description:', notificationDescription);
+    setNotificationTitle("")
+    setNotificationDescription("")
+
   };
 
   

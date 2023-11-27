@@ -36,8 +36,8 @@ function SocialURL() {
       let res = await SocailURLsAdd(newSocialURL)
       console.log("REsponce ::::::::::::::::::::::",res)
 
-      if(res.status == 200){
-          setSocialURLs([...socialURLs, newSocialURL]);
+      if(res.flags){
+          setSocialURLs([...socialURLs, res.data]);
           setNewPlatform('');
           setNewURL('');
       }else{
@@ -50,7 +50,7 @@ function SocialURL() {
   };
 
   const deleteSocialURL =async (id) => {
-    const updatedSocialURLs = socialURLs.filter((url) => url.id !== id);
+    const updatedSocialURLs = socialURLs.filter((url) => url._id !== id);
     await DeleteSocailURLs(id)
     setSocialURLs(updatedSocialURLs);
   };
@@ -86,7 +86,7 @@ function SocialURL() {
             </a>
             <button
               className={styles.deleteButton}
-              onClick={() => deleteSocialURL(url.id)}
+              onClick={() => deleteSocialURL(url._id)}
             >
               Delete
             </button>

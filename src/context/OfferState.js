@@ -555,7 +555,7 @@ const OfferState = (props) => {
                     'token':token
                 },
                 body:JSON.stringify(data)
-            }).then(d => d)
+            }).then(d => d.json())
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
@@ -649,7 +649,7 @@ const OfferState = (props) => {
                     'token':token
                 },
                 body:JSON.stringify(data)
-            }).then(d => d)
+            }).then(d => d.json())
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
@@ -842,7 +842,7 @@ const OfferState = (props) => {
                     'token':token
                 },
                 body:JSON.stringify(data)
-            }).then(d => d)
+            }).then(d => d.json())
 
             const json =  response
             console.log("data api from :latatestUser :::...", json)
