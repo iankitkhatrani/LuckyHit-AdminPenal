@@ -23,10 +23,8 @@ function Navbar() {
       </div>
       <div className={styles.adminInfoActivepage}>{activePage.value}</div>
       <div >
-        <form className={styles.navbarSearch}>
           <input className={styles.navbarSearchInput} type="text" placeholder='Search...' />
-          <img className={styles.navbarSearchIcon} src="/Image/Sidebar/search.png" alt="User" />
-        </form>
+  
       </div>
       <div className={styles.navbarNotification}>
         <img className={styles.navbarNotificationIcon} src="/Image/Sidebar/Noti.png" alt="User" />
