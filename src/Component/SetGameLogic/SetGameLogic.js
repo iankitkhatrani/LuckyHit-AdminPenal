@@ -4,9 +4,10 @@ import { useLocation } from 'react-router-dom';
 import offerContext from '../../context/offerContext'
 
 const SetGameLogic = () => {
-  const [selectedMode, setSelectedMode] = useState('No One Will Win');
+  const [selectedMode, setSelectedMode] = useState('Client');
 
   const handleModeChange = (event) => {
+
     setSelectedMode(event.target.value);
   };
 
@@ -44,30 +45,30 @@ const SetGameLogic = () => {
             type="radio"
             id="noOneWillWin"
             name="gameMode"
-            value="No One Will Win"
-            checked={selectedMode === 'No One Will Win'}
+            value="Client"
+            checked={selectedMode === 'Client'}
             onChange={handleModeChange}
           />
-          <label htmlFor="noOneWillWin">No One Will Win</label>
+          <label htmlFor="noOneWillWin">Client Will Win</label>
         </div>
         <div className={styles.radioOption}>
           <input
             type="radio"
             id="List Will Win"
             name="gameMode"
-            value="Least Amount Will Win"
-            checked={selectedMode === 'Least Amount Will Win'}
+            value="User"
+            checked={selectedMode === 'User'}
             onChange={handleModeChange}
           />
-          <label htmlFor="List Will Win">Least Amount Will Win</label>
+          <label htmlFor="List Will Win">User Will Win</label>
         </div>
         <div className={styles.radioOption}>
           <input
             type="radio"
             id="normalgame"
             name="gameMode"
-            value="Normal Game"
-            checked={selectedMode === 'Normal Game'}
+            value="Normal"
+            checked={selectedMode === 'Normal'}
             onChange={handleModeChange}
           />
           <label htmlFor="normalgame">Normal Game</label>

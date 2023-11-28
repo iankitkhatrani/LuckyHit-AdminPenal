@@ -5,7 +5,7 @@ import React, { useState,useContext} from 'react';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
-const host = "http://16.170.158.18:2828";//"http://192.168.0.203:2828"//
+const host = "http://192.168.0.203:2828"//"http://16.170.158.18:2828";
 //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTQ5Y2NlM2JhNDA4YTJlMjg3ZjJlYzUiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQHNpc3VnYW16LmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJHhZZzVMUlNRRWxiNENOZnVocjdncmUyUjNMOUQ5eDhaWmc0c0QxSW9uY1N6ZWFTSHgzMTIuIiwiY3JlYXRlZEF0IjoiMjAyMy0xMS0wN1QwNTozNjozNS42NjBaIiwibW9kaWZpZWRBdCI6IjIwMjMtMTEtMDdUMDU6MzY6MzUuNjYwWiIsImlhdCI6MTY5OTMzNTQxMywiZXhwIjoxNjk5OTQwMjEzfQ.NrLsWSnyD09P3h30rsng_R3bygn3TsKl8nXyD7qom4c";
 
 const OfferState = (props) => {
@@ -422,10 +422,10 @@ const OfferState = (props) => {
     //======================
     // game History 
 
-    const RummyGameHistory = async () => {
+    const BlackWhiteGameHistory = async () => {
         try{
-            console.log("PlayerList :::::::",`${host}/admin/games/rummyGameHistory`)
-            const response = await fetch(`${host}/admin/games/rummyGameHistory`, {
+            console.log("PlayerList :::::::",`${host}/admin/games/blackwhitegamehistory`)
+            const response = await fetch(`${host}/admin/games/blackwhitegamehistory`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -451,10 +451,10 @@ const OfferState = (props) => {
         }
     } 
 
-    const LudoGameHistory = async () => {
+    const AviatorGameHistory = async () => {
         try{
-            console.log("PlayerList :::::::",`${host}/admin/games/ludoGameHistory`)
-            const response = await fetch(`${host}/admin/games/ludoGameHistory`, {
+            console.log("PlayerList :::::::",`${host}/admin/games/aviatorGameHistory`)
+            const response = await fetch(`${host}/admin/games/aviatorGameHistory`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -1132,7 +1132,7 @@ const OfferState = (props) => {
         <offerContext.Provider value={{
             host,
             adminname,adminEmail,dashboardData,latatestUser,PlayerList,PlayerData,
-            PlayerAdd,PlayerDelete,RummyGameHistory,LudoGameHistory,GameLogicSet,GetRouletteHistoryData,GetCompleteWithdrawalData,
+            PlayerAdd,PlayerDelete,BlackWhiteGameHistory,AviatorGameHistory,GameLogicSet,GetRouletteHistoryData,GetCompleteWithdrawalData,
             GetCompleteDespositeData,GetRegisterReferralBonusData,GetMyReferralData,
             SocailURLsList,SocailURLsAdd,DeleteSocailURLs,
             NoticeTextList,NoticeTextLsAdd,DeleteNoticeText,

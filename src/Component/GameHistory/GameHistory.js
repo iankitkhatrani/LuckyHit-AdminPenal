@@ -54,17 +54,17 @@ const GameHistory = () => {
     
     const context = useContext(offerContext)
     console.log("Contect ",context)
-    const { RummyGameHistory,LudoGameHistory } = context
+    const { BlackWhiteGameHistory,AviatorGameHistory } = context
 
     useEffect( () => {
         const submitdata = async () => {
             
-            console.log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK ::::::")
+            console.log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK ::::::",gameName)
 
-            if(gameName == "teenpatti"){
-                setGameHistoryData(await RummyGameHistory())
+            if(gameName == "BlackWhite"){
+                setGameHistoryData(await BlackWhiteGameHistory())
             }else{
-                setGameHistoryData(await LudoGameHistory())
+                setGameHistoryData(await AviatorGameHistory())
             }
     
       }

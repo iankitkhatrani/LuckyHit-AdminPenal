@@ -135,7 +135,7 @@ function Sidebar() {
                 {isRummyDropdownOpen && (
                   <ul className={styles.dropdownMenu} >
                     <li>
-                      <Link to="/gamehistory?game=teenpatti" onClick={() => handleClick('Teenpatti/Game History')}>
+                      <Link to="/gamehistory?game=BlackWhite" onClick={() => handleClick('Black And White/Game History')}>
                         <li className={styles.dropdowncontent}>
                           <img src="/Image/Sidebar/user.png" alt="Dashboard" />
                           Game History
@@ -143,7 +143,7 @@ function Sidebar() {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/setgamelogic?game=teenpatti"  onClick={() => handleClick('Teenpatti/Game Logic')}>
+                      <Link to="/setgamelogic?game=BlackWhite"  onClick={() => handleClick('Black And White/Game Logic')}>
                         <li className={styles.dropdowncontent}>
                           <img src="/Image/Sidebar/user.png" alt="Dashboard" />
                           Set game logic
