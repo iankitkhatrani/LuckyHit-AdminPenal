@@ -57,12 +57,11 @@ margin-right: 30px;
   border-radius: 4px;
   outline: none;
   background-color: #0d0d19;
-  border: none;
-color: white;
+  color: white;
   display: flex;
-
   justify-content: center;
   align-items: center;
+  margin-top:17px;
 }
 
 .navbarSearchIcon {
@@ -174,7 +173,7 @@ color: white;
 .AdmindropdownMenuOut {
   background-color: red;
   color: white;
-  padding: 2px;
+  padding: 1px;
   display: flex;
   justify-content: center;
   align-items: center;

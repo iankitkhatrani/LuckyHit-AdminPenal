@@ -46,9 +46,6 @@ function Banner() {
       }else{
           alert("Error Please enter")
       }
-
-
-      
     }
   };
 

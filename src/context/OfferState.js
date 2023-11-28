@@ -17,6 +17,11 @@ const OfferState = (props) => {
     const [adminEmail, setAdminEmail] = useState(props.adminEmail);
     const [token, setToken] = useState(cookies.get('token'));
 
+    const LogoutClick = async()=>{
+        setToken("")
+        cookies.set('token', "");
+        return false
+    }
 
     const dashboardData = async () => {
         try{
@@ -1140,7 +1145,7 @@ const OfferState = (props) => {
             SendPushnotification,
             BannerList,BannerAdd,DeleteBanner,UploadBanner,
             BotList,BotAdd,BotDelete,BotData,UploadProfile,BotUpdate,
-            AddMoney,DeductMoney
+            AddMoney,DeductMoney,LogoutClick
             }}>
             {props.children}
         </offerContext.Provider>)

@@ -54,10 +54,11 @@
   }
   .AdmindropdownMenu{
     position: absolute;
-    padding: 10px;
-    left: 138px;
-    width: 60px;
+    padding: 0px;
+    left: 116px;
+    width: 64px;
     border: 2px solid red;
+    background-color: red;
   }
   .mainmenu{
     padding: 10px 20px;

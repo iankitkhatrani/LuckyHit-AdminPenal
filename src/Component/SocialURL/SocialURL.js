@@ -43,9 +43,6 @@ function SocialURL() {
       }else{
           alert("Error Please enter")
       }
-
-
-      
     }
   };
 

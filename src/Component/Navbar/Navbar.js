@@ -49,8 +49,8 @@ function Navbar() {
             {isAdmindropdownOpen ? <ChevronDown /> : <ChevronRight />}
           </div>
           {isAdmindropdownOpen && (<div className={styles.AdmindropdownMenu} >
-            <div className={styles.AdmindropdownMenuOut}>Log Out</div>
-            <div className={styles.AdmindropdownMenuIn}>Login</div>
+            
+            <Button className={styles.AdmindropdownMenuOut} variant="danger">Log Out</Button>
           </div>)}
 
         </div>

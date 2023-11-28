@@ -116,6 +116,7 @@ const PlayerManagement = () => {
           placeholder="To Date"
           value={toDate}
           onChange={(e) => setToDate(e.target.value)}
+          style={{marginLeft: "1rem"}}
         />
         <button className={styles.resetbtn} onClick={resetDate}>Reset</button>
 
@@ -217,7 +218,7 @@ const PlayerManagement = () => {
         >
           Previous
         </button>
-        <span>{currentPage} / {totalPages}</span>
+        <span style={{margin: "0 1rem"}}>{currentPage} / {totalPages}</span>
         <button
           onClick={() => goToPage(currentPage + 1)}
           disabled={currentPage === totalPages}

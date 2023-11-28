@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { AddCurrentPage } from '../../Redux/Features/CurrentPageDataSlice/CurrentPageDataSlice';
 
 import offerContext from '../../context/offerContext'
+import Button from 'react-bootstrap/Button';
 
 function Sidebar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -47,7 +48,7 @@ function Sidebar() {
   };
 
   const context = useContext(offerContext)
-    const { adminname,adminEmail } = context
+  const { adminname,adminEmail,LogoutClick } = context
 
   return (
     <div className={styles.sidebar}>
@@ -68,16 +69,11 @@ function Sidebar() {
             {isAdmindropdownOpen ? <ChevronDown /> : <ChevronRight />}
           </div>
           {isAdmindropdownOpen && (<div className={styles.AdmindropdownMenu} >
-            <div>Log Out</div>
-            <div>Login</div>
+            
+            <Button className={styles.AdmindropdownMenuOut} variant="danger">Log Out</Button>
           </div>)}
-
         </div>
-
-
       </div>
-
-
 
       {/*<div className={styles.mainmenu}>Main Menu</div>  ******************************************************************** */}
       <ul className={styles.navList}>
