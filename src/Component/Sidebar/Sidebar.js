@@ -9,6 +9,8 @@ import { AddCurrentPage } from '../../Redux/Features/CurrentPageDataSlice/Curren
 
 import offerContext from '../../context/offerContext'
 import Button from 'react-bootstrap/Button';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 function Sidebar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -40,6 +42,18 @@ function Sidebar() {
     console.log(name)
     dispatch(AddCurrentPage(name))
   }
+
+  
+
+  const handleClickLogOut = () =>{
+    console.log("ClickLogout")
+    localStorage.removeItem('token')
+    cookies.remove('token');
+    window.location.reload(true)
+
+  }
+
+
   const [socialUrl, setSocialUrl] = useState("");
 
   // Handle hover and click events
@@ -82,7 +96,6 @@ function Sidebar() {
           <Link to="/adminpage" onClick={() => handleClick('Dashboard')}>
             <li className={styles.pppp}>
             {socialUrl==="adminpage"?<img src={process.env.PUBLIC_URL+'/Image/Sidebar/gdash.png'} alt="Dashboard" />:<img src="/Image/Sidebar/dash.png" alt="Dashboard" />}
-
               Dashboard
             </li>
           </Link>
@@ -284,6 +297,16 @@ function Sidebar() {
             <li className={styles.pppp}>
             {socialUrl==="settings"?<img src="/Image/Sidebar/gsetting.png" alt="Dashboard" />:<img src="/Image/Sidebar/setting.png" alt="Dashboard" />}
               Settings
+            </li>
+          </Link>
+        </li>
+
+
+        <li className={styles.navlistLi} onMouseEnter={()=>handleHover("login")} onMouseLeave={()=>handleHover("")}>
+          <Link to="/login" onClick={() => handleClickLogOut('login')}>
+            <li className={styles.pppp}>
+            {socialUrl==="settings"?<img src="/Image/Sidebar/gsetting.png" alt="Dashboard" />:<img src="/Image/Sidebar/setting.png" alt="Dashboard" />}
+              Logout
             </li>
           </Link>
         </li>

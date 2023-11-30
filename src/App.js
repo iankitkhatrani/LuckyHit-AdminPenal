@@ -11,23 +11,26 @@ const cookies = new Cookies();
 function App() {
 
   //const [tokendata, setTokendata] = useState("");
-  const [adminname, setAdminname] = useState("");
-  const [adminEmail, setAdminEmail] = useState("");
+  const [adminname, setAdminname] = useState();
+  const [adminEmail, setAdminEmail] = useState();
 
   const tokendata  = cookies.get('token')
+  const name = cookies.get('name')
+  const email = cookies.get('email')
+
 
   console.log("tokendata LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",tokendata)
   //setToken={setTokendata}
     if(!tokendata) {
-        return <Login   setAdmin={setAdminname}  setAdminEmail={setAdminEmail}/>
+        return <Login setAdmin={setAdminname}  setAdminEmail={setAdminEmail}/>
     }
 
   return (
 
-    <OfferState adminname={adminname} adminEmail={adminEmail} tokendata={tokendata}>
+    <OfferState adminname={name} adminEmail={email} tokendata={tokendata}>
     <div >
       <MobileCheck/>
-      <Dashbord/>
+      <Dashbord adminname={name} adminEmail={email} tokendata={tokendata} />
     </div>
     </OfferState>
   );

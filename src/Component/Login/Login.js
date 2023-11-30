@@ -57,6 +57,9 @@ function Login(props) {
         props.setAdminEmail(resData.data.email)
 
         cookies.set('token', resData.data.token);
+        cookies.set('name', resData.data.name);
+        cookies.set('email', resData.data.email);
+
       
 
     }else{
