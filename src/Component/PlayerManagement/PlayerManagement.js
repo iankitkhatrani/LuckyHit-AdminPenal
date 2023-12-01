@@ -5,6 +5,7 @@ import offerContext from '../../context/offerContext'
 
 
 
+
 const recordsPerPage = 5;
 
 const PlayerManagement = () => {
@@ -35,9 +36,7 @@ const PlayerManagement = () => {
   
   useEffect( () => {
     const submitdata = async () => {
-    
       setUserData(await PlayerList())
-
   }
 
   submitdata()
@@ -101,7 +100,6 @@ const PlayerManagement = () => {
 
   return (
     <div className={styles['player-management-container']}>
-      <h1 className={styles.playermanage}>Player Management</h1>
 
       <div className={styles.filters}>
        <div className={styles.filters}>
@@ -213,6 +211,7 @@ const PlayerManagement = () => {
 
       <div className={styles.pagination}>
         <button
+        style={{"border-radius": "15px"}}
           onClick={() => goToPage(currentPage - 1)}
           disabled={currentPage === 1}
         >
@@ -220,6 +219,7 @@ const PlayerManagement = () => {
         </button>
         <span style={{margin: "0 1rem"}}>{currentPage} / {totalPages}</span>
         <button
+        style={{"border-radius": "15px"}}
           onClick={() => goToPage(currentPage + 1)}
           disabled={currentPage === totalPages}
         >

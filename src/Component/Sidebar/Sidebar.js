@@ -45,13 +45,6 @@ function Sidebar() {
 
   
 
-  const handleClickLogOut = () =>{
-    console.log("ClickLogout")
-    localStorage.removeItem('token')
-    cookies.remove('token');
-    window.location.reload(true)
-
-  }
 
 
   const [socialUrl, setSocialUrl] = useState("");
@@ -78,15 +71,7 @@ function Sidebar() {
             <div>{adminEmail}</div>
           </div>
         </div>
-        <div onClick={toggleAdminDropdown}>
-          <div className={styles.ppp}>
-            {isAdmindropdownOpen ? <ChevronDown /> : <ChevronRight />}
-          </div>
-          {isAdmindropdownOpen && (<div className={styles.AdmindropdownMenu} >
-            
-            <Button className={styles.AdmindropdownMenuOut} variant="danger">Log Out</Button>
-          </div>)}
-        </div>
+       
       </div>
 
       {/*<div className={styles.mainmenu}>Main Menu</div>  ******************************************************************** */}
@@ -302,15 +287,7 @@ function Sidebar() {
         </li>
 
 
-        <li className={styles.navlistLi} onMouseEnter={()=>handleHover("login")} onMouseLeave={()=>handleHover("")}>
-          <Link to="/login" onClick={() => handleClickLogOut('login')}>
-            <li className={styles.pppp}>
-            {socialUrl==="settings"?<img src="/Image/Sidebar/gsetting.png" alt="Dashboard" />:<img src="/Image/Sidebar/setting.png" alt="Dashboard" />}
-              Logout
-            </li>
-          </Link>
-        </li>
-
+        
       </ul>
     </div>
   );

@@ -23,6 +23,12 @@
   width: 6%;
 }
 
+.logoutbtn{
+  margin-left: 107px;
+  margin-bottom: -20px;
+
+}
+
 .toggleButton1 {
   width: 40px;
   height: 40px;
@@ -49,6 +55,7 @@
   height: 20px;
   border-radius: 6px;
 margin-right: 30px;
+
 }
 
 .navbarSearchInput {

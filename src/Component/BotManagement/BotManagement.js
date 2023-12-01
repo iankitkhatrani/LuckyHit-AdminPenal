@@ -101,7 +101,6 @@ const BotManagement = () => {
 
   return (
     <div className={styles['player-management-container']}>
-      <h1 className={styles.playermanage}>Bot Management</h1>
 
       <div className={styles.filters}>
        <div className={styles.filters}>

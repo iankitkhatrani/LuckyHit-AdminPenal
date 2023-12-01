@@ -129,6 +129,9 @@ const AdminPage = () => {
             <p>Todays Deposit</p>
           </div>
         </div>
+       
+      </div>
+      <div className={styles.row}>
         <div className={styles.rectangle}>
           <div className={styles.icon}> <img src="/Image/Dashbord/withdraw.png" alt="Icon" /></div>
           <div className={styles.text}>
@@ -143,9 +146,6 @@ const AdminPage = () => {
             <p>Todays KYC</p>
           </div>
         </div>
-      </div>
-      <div className={styles.row}>
-
         <div className={styles.rectangle}>
           <div className={styles.icon}> <img src="/Image/Dashbord/Game played.png" alt="Icon" /></div>
           <div className={styles.text}>

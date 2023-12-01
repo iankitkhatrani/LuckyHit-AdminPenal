@@ -26,12 +26,33 @@
     color:black
   }
   
-  input[type="text"],
-  input[type="password"] {
+  input[type="text"]
+    {
     width: 96%;
     padding: 10px;
     margin-bottom: 20px;
+    border-radius: 15px;
+
   }
+
+  input[type="password"]
+    {
+    width: 96%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+
+  }
+
+  input[type="email"]
+  {
+  width: 96%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+
+}
+
   
   button {
     background-color: #007bff;

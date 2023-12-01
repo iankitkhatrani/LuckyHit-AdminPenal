@@ -16,16 +16,16 @@
     font-size: 0.9375rem;
     margin-left:1rem;
     background-color: #15ff00;
-    
+    border-radius: 15px;  
     
   }
 
   .resetbtn{
-    color: rgb(5, 1, 1);
+    color: rgb(243, 239, 239);
     margin-left:1rem;
 
     font-size: 0.9375rem;
-    
+    border-radius: 15px;
   }
 
   table {
@@ -115,6 +115,7 @@
     width: 200px;
     padding: 10px;
     font-size: 0.9375rem;
+    border-radius: 15px;
     
   }
   .actionButtonIcon{
