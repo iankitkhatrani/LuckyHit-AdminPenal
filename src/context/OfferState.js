@@ -5,7 +5,7 @@ import React, { useState,useContext} from 'react';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
-const host = "http://16.170.158.18:2828";//"http://192.168.0.203:2828"//
+const host = "http://192.168.0.203:2828";//"http://192.168.0.203:2828"//
 //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTQ5Y2NlM2JhNDA4YTJlMjg3ZjJlYzUiLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQHNpc3VnYW16LmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJHhZZzVMUlNRRWxiNENOZnVocjdncmUyUjNMOUQ5eDhaWmc0c0QxSW9uY1N6ZWFTSHgzMTIuIiwiY3JlYXRlZEF0IjoiMjAyMy0xMS0wN1QwNTozNjozNS42NjBaIiwibW9kaWZpZWRBdCI6IjIwMjMtMTEtMDdUMDU6MzY6MzUuNjYwWiIsImlhdCI6MTY5OTMzNTQxMywiZXhwIjoxNjk5OTQwMjEzfQ.NrLsWSnyD09P3h30rsng_R3bygn3TsKl8nXyD7qom4c";
 
 const OfferState = (props) => {
@@ -1133,6 +1133,419 @@ const OfferState = (props) => {
     } 
 
     //======================================================================================
+
+
+    // ========= Deposite List  Details =================
+
+        const DepositeList = async () => {
+        try{
+            console.log("PlayerList :::::::",`${host}/admin/usertransction/DepositList`)
+            const response = await fetch(`${host}/admin/usertransction/DepositList`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'token':token
+                }
+            }).then(data => data.json())
+
+            const json =  response
+            console.log("data api from :latatestUser :::...", json)
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+
+                return []
+            }else{
+                return json.DepositeList
+            }
+
+        }catch(e){
+            console.log("e :" ,e)
+        }
+        } 
+
+        const DepositeAccptedList = async () => {
+            try{
+                console.log("PlayerList :::::::",`${host}/admin/usertransction/AcceptList`)
+                const response = await fetch(`${host}/admin/usertransction/AcceptList`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'token':token
+                    }
+                }).then(data => data.json())
+        
+                const json =  response
+                console.log("data api from :latatestUser :::...", json)
+                
+                if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                    setToken("")
+                    cookies.set('token', "");
+        
+                    return []
+                }else{
+                    return json.AcceptList
+                }
+        
+            }catch(e){
+                console.log("e :" ,e)
+            }
+        } 
+
+        const DepositeRejectedList = async () => {
+            try{
+                console.log("PlayerList :::::::",`${host}/admin/usertransction/RejectList`)
+                const response = await fetch(`${host}/admin/usertransction/RejectList`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'token':token
+                    }
+                }).then(data => data.json())
+        
+                const json =  response
+                console.log("data api from :latatestUser :::...", json)
+                
+                if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                    setToken("")
+                    cookies.set('token', "");
+        
+                    return []
+                }else{
+                    return json.RejectList
+                }
+        
+            }catch(e){
+                console.log("e :" ,e)
+            }
+        } 
+
+        const DepositeAdd = async (data) => {
+            try{
+                console.log("PlayerList :::::::",host)
+                const response = await fetch(`${host}/admin/bot/BotAdd`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'token':token
+                    },
+                    body:JSON.stringify(data)
+                }).then(d => d)
+
+                const json =  response
+                console.log("data api from :latatestUser :::...", json)
+                
+                if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                    setToken("")
+                    cookies.set('token', "");
+
+                    return {}
+                }else{
+                    return json
+                }
+
+            }catch(e){
+                console.log("e :" ,e)
+            }
+        } 
+
+        const UploadScreenshort = async (data) => {
+            try{
+                console.log("PlayerList :::::::",host)
+
+                const formData = new FormData();
+                formData.append("image", data);
+
+                const response = await fetch(`${host}/admin/bot/ProfileUpload`, {
+                    method: 'POST',
+                    headers: {
+                        'token':token
+                    },
+                    body:formData
+                }).then(d => d.json()) 
+
+                console.log("response ",response)
+
+                const json =  response
+                console.log("data api from :latatestUser :::...", json)
+
+                if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                    setToken("")
+                    cookies.set('token', "");
+
+                    return ""
+                }else{
+                    if(json.flag){
+                        return json.path
+                    }else{
+                        return ""
+                    }
+                }
+
+
+            }catch(e){
+                console.log("e :" ,e)
+            }
+        } 
+
+        const DepositeDelete = async (userId) => {
+            try{
+                console.log("PlayerList :::::::",host)
+                const response = await fetch(`${host}/admin/bot/BotDelete/`+userId, {
+                    method: 'delete',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'token':token
+                    }
+                }).then(d => d)
+
+                const json =  response
+                console.log("data api from :latatestUser :::...", json)
+                
+                if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                    setToken("")
+                    cookies.set('token', "");
+
+                    return {}
+                }else{
+                    return json
+                }
+
+
+            }catch(e){
+                console.log("e :" ,e)
+            }
+        } 
+
+        const DepositeData = async (userId) => {
+            try{
+                console.log("PlayerList :::::::",`${host}/usertransction/DepositData?id=`+userId)
+                const response = await fetch(`${host}/admin/usertransction/DepositData?id=`+userId, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'token':token
+                    }
+                }).then(data => data.json())
+
+                const json =  response
+                console.log("data api from :latatestUser :::...", json)
+                
+                if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                    setToken("")
+                    cookies.set('token', "");
+
+                    return {}
+                }else{
+                    return json.DepositeData
+                }
+
+            }catch(e){
+                console.log("e :" ,e)
+            }
+        }
+        
+        const DepositeUpdate = async (data) => {
+            try{
+                console.log("PlayerList :::::::",host)
+                console.log("DepositeUpdate :::::::",data)
+
+                const response = await fetch(`${host}/admin/usertransction/DepositeUpdate`, {
+                    method: 'put',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'token':token
+                    },
+                    body:JSON.stringify(data)
+                }).then(d => d.json())
+
+                const json =  response
+                console.log("data api from :latatestUser :::...", json)
+            
+                if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                    setToken("")
+                    cookies.set('token', "");
+
+                    return {}
+                }else{
+                    return json
+                }
+
+            }catch(e){
+                console.log("e :" ,e)
+            }
+        } 
+    //===============================================
+
+    // ========= Payout Details =================
+
+        const PayoutList = async () => {
+        try{
+            console.log("PlayerList :::::::",`${host}/admin/usertransction/PayoutList`)
+            const response = await fetch(`${host}/admin/usertransction/PayoutList`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'token':token
+                }
+            }).then(data => data.json())
+    
+            const json =  response
+            console.log("data api from :latatestUser :::...", json)
+            
+            if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                setToken("")
+                cookies.set('token', "");
+    
+                return []
+            }else{
+                return json.PayoutList
+            }
+    
+        }catch(e){
+            console.log("e :" ,e)
+        }
+        } 
+    
+        const PayoutAccptedList = async () => {
+            try{
+                console.log("PlayerList :::::::",`${host}/admin/usertransction/PayoutAcceptList`)
+                const response = await fetch(`${host}/admin/usertransction/PayoutAcceptList`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'token':token
+                    }
+                }).then(data => data.json())
+        
+                const json =  response
+                console.log("data api from :latatestUser :::...", json)
+                
+                if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                    setToken("")
+                    cookies.set('token', "");
+        
+                    return []
+                }else{
+                    return json.AcceptList
+                }
+        
+            }catch(e){
+                console.log("e :" ,e)
+            }
+        } 
+    
+        const PayoutRejectedList = async () => {
+            try{
+                console.log("PlayerList :::::::",`${host}/admin/usertransction/PayoutRejectList`)
+                const response = await fetch(`${host}/admin/usertransction/PayoutRejectList`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'token':token
+                    }
+                }).then(data => data.json())
+        
+                const json =  response
+                console.log("data api from :latatestUser :::...", json)
+                
+                if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                    setToken("")
+                    cookies.set('token', "");
+        
+                    return []
+                }else{
+                    return json.RejectList
+                }
+        
+            }catch(e){
+                console.log("e :" ,e)
+            }
+        } 
+
+        const PayoutUpdate = async (data) => {
+            try{
+                console.log("PlayerList :::::::",host)
+                console.log("PayoutUpdate :::::::",data)
+
+                const response = await fetch(`${host}/admin/usertransction/payoutUpdate`, {
+                    method: 'put',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'token':token
+                    },
+                    body:JSON.stringify(data)
+                }).then(d => d.json())
+
+                const json =  response
+                console.log("data api from :latatestUser :::...", json)
+            
+                if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                    setToken("")
+                    cookies.set('token', "");
+
+                    return {}
+                }else{
+                    return json
+                }
+
+            }catch(e){
+                console.log("e :" ,e)
+            }
+        } 
+
+        const UploadScreenshortPayout = async (data) => {
+            try{
+                console.log("PlayerList :::::::",host)
+
+                const formData = new FormData();
+                formData.append("image", data);
+
+                const response = await fetch(`${host}/admin/usertransction/UploadScreenShortPayOut`, {
+                    method: 'POST',
+                    headers: {
+                        'token':token
+                    },
+                    body:formData
+                }).then(d => d.json()) 
+
+                console.log("response ",response)
+
+                const json =  response
+                console.log("data api from :latatestUser :::...", json)
+
+                if(json.message != undefined && (json.message == "jwt expired" || json.message == "Unauthorized access")){
+                    setToken("")
+                    cookies.set('token', "");
+
+                    return ""
+                }else{
+                    if(json.flag){
+                        return json.path
+                    }else{
+                        return ""
+                    }
+                }
+
+
+            }catch(e){
+                console.log("e :" ,e)
+            }
+        } 
+
+    //=================================
     return (
         <offerContext.Provider value={{
             host,
@@ -1145,7 +1558,9 @@ const OfferState = (props) => {
             SendPushnotification,
             BannerList,BannerAdd,DeleteBanner,UploadBanner,
             BotList,BotAdd,BotDelete,BotData,UploadProfile,BotUpdate,
-            AddMoney,DeductMoney,LogoutClick
+            AddMoney,DeductMoney,LogoutClick,
+            DepositeList,DepositeAccptedList,DepositeRejectedList,DepositeAdd,UploadScreenshort,DepositeDelete,DepositeData,DepositeUpdate,
+            PayoutList,PayoutAccptedList,PayoutRejectedList,PayoutUpdate,UploadScreenshortPayout
             }}>
             {props.children}
         </offerContext.Provider>)

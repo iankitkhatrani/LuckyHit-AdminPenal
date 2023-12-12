@@ -14,9 +14,12 @@ const cookies = new Cookies();
 
 function Sidebar() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+ 
+
+
   const [isRummyDropdownOpen, setIsRummyDropdownOpen] = useState(false);
   const [isLudoDropdownOpen, setIsLudoDropdownOpen] = useState(false);
-  const [isPayoutDropdownOpen, setIsPayoutDropdownOpen] = useState(false);
+  //const [isPayoutDropdownOpen, setIsPayoutDropdownOpen] = useState(false);
   const [isAdmindropdownOpen, setIsAdminDropdownOpen] = useState(false);
   // const[isRummyDropdownOpen,setIsRummyDropdownOpen]=useState(false);
   // const[isRummyDropdownOpen,setIsRummyDropdownOpen]=useState(false);
@@ -34,15 +37,41 @@ function Sidebar() {
   const toggleLudoDropdown = () => {
     setIsLudoDropdownOpen(!isLudoDropdownOpen);
   }
-  const togglePayoutDropdown = () => {
-    setIsPayoutDropdownOpen(!isPayoutDropdownOpen);
-  }
+  // const togglePayoutDropdown = () => {
+  //   setIsPayoutDropdownOpen(!isPayoutDropdownOpen);
+  // }
   const dispatch=useDispatch();
   const handleClick=(name)=>{
     console.log(name)
     dispatch(AddCurrentPage(name))
   }
 
+
+  const [isDropdownOpenDeposit, setIsDropdownOpenDeposit] = useState(false);
+  const [isDepositDropdownOpen, setIsDepositDropdownOpen] = useState(false);
+
+
+  const toggleDropdowndeposit = () => {
+    setIsDropdownOpenDeposit(!isDropdownOpenDeposit);
+  };
+
+  const toggleDepositDropdown = () => {
+    setIsDepositDropdownOpen(!isRummyDropdownOpen);
+  }
+
+
+  
+  const [isDropdownOpenPayout, setIsDropdownOpenPayout] = useState(false);
+  const [isPayoutDropdownOpen, setIsPayoutDropdownOpen] = useState(false);
+
+
+  const toggleDropdownpayout = () => {
+    setIsDropdownOpenPayout(!isDropdownOpenPayout);
+  };
+
+  const togglePayoutDropdown = () => {
+    setIsPayoutDropdownOpen(!isPayoutDropdownOpen);
+  }
   
 
 
@@ -199,6 +228,112 @@ function Sidebar() {
               Bot
             </li>
           </Link>
+        </li>
+
+                  
+        
+
+        <li  className={isDropdownOpenDeposit ? styles.dropdownToggle:styles.dropdownToggleFalse}>
+          <li onClick={toggleDropdowndeposit} className={styles.GameMode} onMouseEnter={()=>handleHover("Deposit")} onMouseLeave={()=>handleHover("")} >
+            <div className={styles.ppp}>
+            {socialUrl==="Deposit"?<img src="/Image/Sidebar/ggame.png" alt="Dashboard" />:<img src="/Image/Sidebar/game.png" alt="Dashboard" />}
+              Deposit
+            </div>
+            <div className={styles.ppp}>
+              {isDropdownOpenDeposit ? <ChevronDown /> : <ChevronRight />}
+            </div>
+
+          </li>
+          {/* Display the dropdown menu when isDropdownOpenDeposit is true */}
+          {isDropdownOpenDeposit && (
+            <ul className={styles.dropdownMenu}>
+              {/* *************rummy******************************* */}
+              <li onClick={toggleDepositDropdown} className={isDepositDropdownOpen ? styles.dropdownToggle : ''}>
+                  <li className={isDepositDropdownOpen ? styles.dropdownToggle : ''} onMouseEnter={()=>handleHover("Deposit")} onMouseLeave={()=>handleHover("")}>
+                    <Link to="/depositmanagement" onClick={() => handleClick('Deposit Management')}>
+                      <li className={styles.pppp}>
+                      {socialUrl==="Deposit"?<img src="/Image/Sidebar/gbot.png" alt="Dashboard" />:<img src="/Image/Sidebar/bot.png" alt="Dashboard" />}
+                        Deposit Pendding
+                      </li>
+                    </Link>
+                </li>
+              </li>
+
+              <li onClick={toggleDepositDropdown} className={isDepositDropdownOpen ? styles.dropdownToggle : ''}>
+                  <li className={isDepositDropdownOpen ? styles.dropdownToggle : ''} onMouseEnter={()=>handleHover("Deposit")} onMouseLeave={()=>handleHover("")}>
+                    <Link to="/depositaccpted" onClick={() => handleClick('Deposit Accepted')}>
+                      <li className={styles.pppp}>
+                      {socialUrl==="Deposit"?<img src="/Image/Sidebar/gbot.png" alt="Dashboard" />:<img src="/Image/Sidebar/bot.png" alt="Dashboard" />}
+                        Deposit Accepted
+                      </li>
+                    </Link>
+                </li>
+              </li>
+
+              <li onClick={toggleDepositDropdown} className={isDepositDropdownOpen ? styles.dropdownToggle : ''}>
+                  <li className={isDepositDropdownOpen ? styles.dropdownToggle : ''} onMouseEnter={()=>handleHover("Deposit")} onMouseLeave={()=>handleHover("")}>
+                    <Link to="/depositrejected" onClick={() => handleClick('Deposit Rejected')}>
+                      <li className={styles.pppp}>
+                      {socialUrl==="Deposit"?<img src="/Image/Sidebar/gbot.png" alt="Dashboard" />:<img src="/Image/Sidebar/bot.png" alt="Dashboard" />}
+                        Deposit Rejected
+                      </li>
+                    </Link>
+                </li>
+              </li>
+            </ul>
+          )}
+        </li>
+
+
+        <li  className={isDropdownOpenPayout ? styles.dropdownToggle:styles.dropdownToggleFalse}>
+          <li onClick={toggleDropdownpayout} className={styles.GameMode} onMouseEnter={()=>handleHover("PayOut")} onMouseLeave={()=>handleHover("")} >
+            <div className={styles.ppp}>
+            {socialUrl==="PayOut"?<img src="/Image/Sidebar/ggame.png" alt="Dashboard" />:<img src="/Image/Sidebar/game.png" alt="Dashboard" />}
+              PayOut
+            </div>
+            <div className={styles.ppp}>
+              {isDropdownOpenPayout ? <ChevronDown /> : <ChevronRight />}
+            </div>
+
+          </li>
+          {/* Display the dropdown menu when isDropdownOpenPayout is true */}
+          {isDropdownOpenPayout && (
+            <ul className={styles.dropdownMenu}>
+              {/* *************rummy******************************* */}
+              <li onClick={togglePayoutDropdown} className={isDepositDropdownOpen ? styles.dropdownToggle : ''}>
+                  <li className={isDepositDropdownOpen ? styles.dropdownToggle : ''} onMouseEnter={()=>handleHover("PayOut")} onMouseLeave={()=>handleHover("")}>
+                    <Link to="/payoutmanagement" onClick={() => handleClick('PayOut Management')}>
+                      <li className={styles.pppp}>
+                      {socialUrl==="Deposit"?<img src="/Image/Sidebar/gbot.png" alt="Dashboard" />:<img src="/Image/Sidebar/bot.png" alt="Dashboard" />}
+                        Payout Pendding
+                      </li>
+                    </Link>
+                </li>
+              </li>
+
+              <li onClick={togglePayoutDropdown} className={isDepositDropdownOpen ? styles.dropdownToggle : ''}>
+                  <li className={isDepositDropdownOpen ? styles.dropdownToggle : ''} onMouseEnter={()=>handleHover("PayOut")} onMouseLeave={()=>handleHover("")}>
+                    <Link to="/payoutaccpted" onClick={() => handleClick('PayOut Accepted')}>
+                      <li className={styles.pppp}>
+                      {socialUrl==="Deposit"?<img src="/Image/Sidebar/gbot.png" alt="Dashboard" />:<img src="/Image/Sidebar/bot.png" alt="Dashboard" />}
+                        Payout Accepted
+                      </li>
+                    </Link>
+                </li>
+              </li>
+
+              <li onClick={togglePayoutDropdown} className={isDepositDropdownOpen ? styles.dropdownToggle : ''}>
+                  <li className={isDepositDropdownOpen ? styles.dropdownToggle : ''} onMouseEnter={()=>handleHover("PayOut")} onMouseLeave={()=>handleHover("")}>
+                    <Link to="/payoutrejected" onClick={() => handleClick('PayOut Rejected')}>
+                      <li className={styles.pppp}>
+                      {socialUrl==="Deposit"?<img src="/Image/Sidebar/gbot.png" alt="Dashboard" />:<img src="/Image/Sidebar/bot.png" alt="Dashboard" />}
+                        Payout Rejected
+                      </li>
+                    </Link>
+                </li>
+              </li>
+            </ul>
+          )}
         </li>
 
         {/* ******************************************************************** 

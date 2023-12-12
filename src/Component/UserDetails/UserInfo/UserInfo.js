@@ -201,8 +201,7 @@ function UserInfo(props) {
 
                 <Form.Select aria-label="Default select example" onChange={handleType}>
                     <option value="">Transaction Mode</option>
-                    <option value="Bonus">Bonus</option>
-                    <option value="Refund">Refund</option>
+                    <option value="Deposit">Deposit</option>
                 </Form.Select>
 
                 </Modal.Body>
@@ -233,8 +232,7 @@ function UserInfo(props) {
 
                 <Form.Select aria-label="Default select example" onChange={handleType}>
                     <option value="">Transaction Mode</option>
-                    <option value="Bonus">Bonus</option>
-                    <option value="Refund">Refund</option>
+                    <option value="Withdrawal">Withdrawal</option>
                 </Form.Select>
 
                 </Modal.Body>

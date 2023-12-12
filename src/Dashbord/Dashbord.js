@@ -21,6 +21,16 @@ import Mentenance from '../Component/Mentenance/Mentenance';
 import Notification from '../Component/Notification/Notification';
 import Banner from '../Component/Banner/Banner';
 import Settings from '../Component/Settings/Settings';
+import DepositManagement from '../Component/DepositManagement/DepositManagement'
+import DepositAccpted from '../Component/DepositAccpted/DepositAccpted'
+import DepositRejected from '../Component/DepositRejected/DepositRejected'
+
+import PayoutManagement from '../Component/PayoutManagement/PayoutManagement'
+import PayoutAccpted from '../Component/PayoutAccpted/PayoutAccpted'
+import PayoutRejected from '../Component/PayoutRejected/PayoutRejected'
+import TrasctionUpdate from '../Component/TrasctionUpdate/TransctionDetails'
+import PayoutTrasctionUpdate from '../Component/PayoutTrasctionUpdate/PayoutTransctionDetails'
+
 
 const Dashbord = () => {
     return (
@@ -51,10 +61,22 @@ const Dashbord = () => {
                                 <Route path="/settings" element={<Settings />} />
                                 <Route path="/aBotDetails" element={<ABotDetails />} />
                                 <Route path="/botregistration" element={<BotRegistration />} />
+                                <Route path="/depositmanagement" element={<DepositManagement />} />
+                                <Route path="/depositaccpted" element={<DepositAccpted />} />
+                                <Route path="/depositrejected" element={<DepositRejected />} />
+
+                                <Route path="/payoutmanagement" element={<PayoutManagement />} />
+                                <Route path="/payoutaccpted" element={<PayoutAccpted />} />
+                                <Route path="/payoutrejected" element={<PayoutRejected />} />
+
+                                <Route path="/trasctionupdate" element={<TrasctionUpdate />} />
+
+                                <Route path="/payouttrasctionupdate" element={<PayoutTrasctionUpdate />} />
+
+
 
                                 
 
-                             
                             </Routes>
                         </div>
                     </div>

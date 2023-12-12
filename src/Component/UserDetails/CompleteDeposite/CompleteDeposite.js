@@ -79,11 +79,10 @@ const CompleteDeposite = (props) => {
                         <th className={styles.tableHeader}>SrNo</th>
                         <th className={styles.tableHeader}>DateTime</th>
                         <th className={styles.tableHeader}>Name</th>
-                        <th className={styles.tableHeader}>PhoneNumber</th>
-                        <th className={styles.tableHeader}>RoomId</th>
-                        <th className={styles.tableHeader}>Amount</th>
+                        <th className={styles.tableHeader}>Previous Chips</th>
+                        <th className={styles.tableHeader}>Withdrawal</th>
+                        <th className={styles.tableHeader}>Current Chips</th>
                         <th className={styles.tableHeader}>Type</th>
-                        <th className={styles.tableHeader}>Club</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,22 +91,20 @@ const CompleteDeposite = (props) => {
 
                         <tr key={entry.SrNo} className={styles['row-odd']}>
                             <td className={styles.tableData}>{startIndex + index + 1}</td>
-                            <td className={styles.tableData}>{entry.DateTime}</td>
-                            <td className={styles.tableData}>{entry.Name}</td>
-                            <td className={styles.tableData}>{entry.PhoneNumber}</td>
-                            <td className={styles.tableData}>{entry.RoomId}</td>
-                            <td className={styles.tableData}>{entry.Amount}</td>
-                            <td className={styles.tableData}>{entry.Type}</td>
-                            <td className={styles.tableData}>{entry.Club}</td>
+                            <td className={styles.tableData}>{entry.createdAt}</td>
+                            <td className={styles.tableData}>{entry.uniqueId}</td>
+                            <td className={styles.tableData}>{entry.oppChips}</td>
+                            <td className={styles.tableData}>{entry.trnxAmount}</td>
+                            <td className={styles.tableData}>{entry.totalBucket}</td>
+                            <td className={styles.tableData}>{entry.trnxTypeTxt}</td>
                         </tr> : <tr key={entry.SrNo}>
                             <td className={styles.tableData}>{startIndex + index + 1}</td>
-                            <td className={styles.tableData}>{entry.DateTime}</td>
-                            <td className={styles.tableData}>{entry.Name}</td>
-                            <td className={styles.tableData}>{entry.PhoneNumber}</td>
-                            <td className={styles.tableData}>{entry.RoomId}</td>
-                            <td className={styles.tableData}>{entry.Amount}</td>
-                            <td className={styles.tableData}>{entry.Type}</td>
-                            <td className={styles.tableData}>{entry.Club}</td>
+                            <td className={styles.tableData}>{entry.createdAt}</td>
+                            <td className={styles.tableData}>{entry.uniqueId}</td>
+                            <td className={styles.tableData}>{entry.oppChips}</td>
+                            <td className={styles.tableData}>{entry.trnxAmount}</td>
+                            <td className={styles.tableData}>{entry.totalBucket}</td>
+                            <td className={styles.tableData}>{entry.trnxTypeTxt}</td>
                         </tr>
                     ))}
                 </tbody>
