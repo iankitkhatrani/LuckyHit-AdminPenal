@@ -16,8 +16,6 @@ const ABotDetails = () => {
         navigate('/botmanagement');
     };
 
-    
-
     const context = useContext(offerContext)
     const { BotData,BotUpdate,UploadProfile,host } = context
     let [userInfo,SetuserInfo] = useState({
@@ -47,15 +45,12 @@ const ABotDetails = () => {
     
     const handleChange = (event) => {
         const { name, value } = event.target;
-            console.log("NAME :::::::::::::::::",value)
+        console.log("NAME :::::::::::::::::",value)
         SetuserInfo({
             ...userInfo,
             [name]: value,
         });
-
-
         console.log("handleChange ::::::::::::::::::::::",userInfo)
-
     };
 
     const OnChange = (event) => {
@@ -74,8 +69,6 @@ const ABotDetails = () => {
 
     };
 
-    
-
     const handleImage = async (e) =>{
         console.log("Upload image ",e.target.files[0])
         //this.setState({image_url:e.target.files[0]})
@@ -87,10 +80,7 @@ const ABotDetails = () => {
         });
 
         console.log("userInfo handleImage KKKKKKKKKKKKKKKKKKKKKKKKKKK",userInfo)
-
     }
-
-    
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -108,13 +98,8 @@ const ABotDetails = () => {
         }else{
             alert("Error Please enter")
         }
-
         console.log(userInfo);
-
-       
-
     };
-
 
     return (
         <>
@@ -129,8 +114,6 @@ const ABotDetails = () => {
             </div>
         </div>
             <form onSubmit={handleSubmit}>
-                
-                
                 <div className={styles.rowwise}>
                     <div className={styles.inputGroup}>
                         <label htmlFor="name">Player Name *</label>
@@ -141,7 +124,6 @@ const ABotDetails = () => {
                             id="name"
                             value={userInfo.name}
                             onChange={handleChange}
-                            
                         />
                     </div>
                     <div className={styles.inputGroup}>
@@ -153,7 +135,6 @@ const ABotDetails = () => {
                             id="country"
                             value={userInfo.country}
                             onChange={handleChange}
-                            
                         />
                     </div>
                 </div>
@@ -167,7 +148,6 @@ const ABotDetails = () => {
                             name="profileUrl"
                             id="profileUrl"
                             onChange={handleImage}
-                            
                         />
 
                     </div>
@@ -179,7 +159,6 @@ const ABotDetails = () => {
 
                 
                 <div className={styles.rowwise}>
-                    
                     <div>
                     <label htmlFor="Status">Status *</label>
                     <label>

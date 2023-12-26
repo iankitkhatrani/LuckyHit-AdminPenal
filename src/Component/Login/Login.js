@@ -4,8 +4,7 @@ import styles from './Login.module.css'; // Import CSS module
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
-const host = "http://13.50.221.113:3001";//"http://192.168.0.203:2828"//
-
+const host = "http://192.168.0.203:2828"//"http://13.50.221.113:3001";//
 
 
 function Login(props) {

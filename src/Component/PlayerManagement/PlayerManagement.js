@@ -14,20 +14,7 @@ const PlayerManagement = () => {
   const [toDate, setToDate] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
-  // {
-  //   "userid": "1",
-  //   "username": "Alice",
-  //   "mobilenumber": "123-456-7890",
-  //   "gameplayed": 50,
-  //   "mainwallet": 1000,
-  //   "referralcode": "",
-  //   "registration_date": "2023-01-15",
-  //   "last_login": "2023-10-05",
-  //   "block_user": true,
-  //   "status": "Active",
-  //   "counter":1
-  // },
-
+  
   let [userData,setUserData] = useState([]);
 
   const context = useContext(offerContext)
@@ -63,7 +50,6 @@ const PlayerManagement = () => {
 
   // Filter the user data for the current page
   const usersOnCurrentPage = filteredUsers.slice(startIndex, endIndex);
-
   const totalPages = Math.ceil(filteredUsers.length / recordsPerPage);
 
   const goToPage = (page) => {

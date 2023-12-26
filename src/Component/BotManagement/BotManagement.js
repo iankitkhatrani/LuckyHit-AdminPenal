@@ -4,7 +4,6 @@ import {useNavigate} from 'react-router-dom';
 import offerContext from '../../context/offerContext'
 
 
-
 const recordsPerPage = 5;
 
 const BotManagement = () => {
@@ -98,7 +97,6 @@ const BotManagement = () => {
     setUserData(await BotList())
   }
   
-
   return (
     <div className={styles['player-management-container']}>
 
