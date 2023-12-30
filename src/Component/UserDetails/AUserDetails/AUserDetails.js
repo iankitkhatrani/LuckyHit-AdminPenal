@@ -31,10 +31,6 @@ const AUserDetails = () => {
     let [registerReferralBonus,SetregisterReferralBonus] = useState([])
     let [myReferral,SetmyReferral] = useState([])
 
-
-
-
-
     console.log("rouletteHistory ::::::::::::::::::",rouletteHistory)
 
     useEffect(() => {
